@@ -1,5 +1,5 @@
 # flasher
-A simple, fast Flash Sale Bot for Shopee without web automation
+A simple, fast flash sale bot for Shopee without web automation
 
 # Bahan-Bahan (PC/Laptop)
 - Python 3.8.x
