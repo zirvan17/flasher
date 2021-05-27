@@ -68,8 +68,8 @@ class ShopeeBot:
             data["add_on_deal_info"]("add_on_deal_id"), data("brand"),
             data("flash_sale") is not None, data("itemid"), data("liked_count"),
             [Item.Model(
-                model.get("itemid", None), model.get("modelid", None), model.get("name", None), model.get("price", None),
-                model.get("stock", None)
+                model.get("itemid", None), model.get("modelid", None), model.get("name", None),
+                model.get("price", None), model.get("stock", None)
             ) for model in data["models"]],
             data("name"), data("price"), data("shop_location"),
             data("shopid"), data("stock"), Item.UpcomingFlashSale(
