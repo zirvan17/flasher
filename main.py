@@ -28,18 +28,14 @@ def int_input(prompt_: str, max_: int = -1, min_: int = 1) -> int:
         if input_.isdigit():
             input_int = int(input_)
 
-            if max_ == -1:
+            if min_ <= input_int <= max_ or (min_ <= input_int and max_ == -1):
                 return input_int
-            elif min_ <= input_int <= max_:
-                return input_int
-            elif input_int > max_:
-                ERROR << "Angka terlalu banyak!"
-                continue
+            elif input_int > max_ != -1:
+                ERROR << "Angka terlalu banyak!\n"
             elif input_int < min_:
-                ERROR << "Angka terlalu sedikit!"
-                continue
-
-        ERROR << "Masukkan angka!\n"
+                ERROR << "Angka terlalu sedikit!\n"
+        else:
+            ERROR << "Masukkan angka!\n"
 
 
 def clear():
