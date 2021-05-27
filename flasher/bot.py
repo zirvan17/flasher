@@ -25,13 +25,13 @@ class ShopeeBot:
             raise Exception("login error")
 
         return User(
-            data["userid"], data["shopid"], data["username"], data["email"], data["phone"],
+            data("userid"), data("shopid"), data("username"), data("email"), data("phone"),
             data["phone_verified"], User.Address(
-                data["default_address"]["address"],
-                data["default_address"]["city"],
-                data["default_address"]["country"],
-                data["default_address"]["id"],
-                data["default_address"]["name"]
+                data["default_address"]("address"),
+                data["default_address"]("city"),
+                data["default_address"]("country"),
+                data["default_address"]("id"),
+                data["default_address"]("name")
             ), cookie
         )
 
@@ -64,18 +64,18 @@ class ShopeeBot:
         data = _getordefault.GetOrDefault(resp.json()["item"])
 
         return Item(
-            data["add_on_deal_info"]["add_on_deal_id"], data["brand"],
-            data["flash_sale"] is not None, data["itemid"], data["liked_count"],
+            data["add_on_deal_info"]("add_on_deal_id"), data("brand"),
+            data("flash_sale") is not None, data("itemid"), data("liked_count"),
             [Item.Model(
-                model["itemid"], model["modelid"], model["name"], model["price"],
-                model["stock"]
+                model("itemid"), model("modelid"), model("name"), model("price"),
+                model("stock")
             ) for model in data["models"]],
-            data["name"], data["price"], data["shop_location"],
-            data["shopid"], data["stock"], Item.UpcomingFlashSale(
-                data["upcoming_flash_sale"]["end_time"],
-                data["upcoming_flash_sale"]["start_time"],
-                data["upcoming_flash_sale"]["stock"]
-            ), data["view_count"]
+            data("name"), data("price"), data("shop_location"),
+            data("shopid"), data("stock"), Item.UpcomingFlashSale(
+                data["upcoming_flash_sale"]("end_time"),
+                data["upcoming_flash_sale"]("start_time"),
+                data["upcoming_flash_sale"]("stock")
+            ), data("view_count")
         )
 
     def add_to_cart(self, item: Item, selected_model: int = 0) -> t.Optional[CartItem]:
@@ -100,7 +100,7 @@ class ShopeeBot:
 
         return CartItem(
             item.add_on_deal_id, str(data["item_group_id"]) if data["item_group_id"]
-                                                               is not None else 0, data["itemid"], data["modelid"],
+            is not None else 0, data["itemid"], data["modelid"],
             item.price, item.shop_id
         )
 
