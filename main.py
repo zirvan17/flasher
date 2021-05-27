@@ -162,7 +162,7 @@ def main():
     end = datetime.now() - start
     INFO << "Item berhasil dibeli dalam waktu " << end.seconds << " detik " << end.microseconds // 1000 <<\
         " milidetik\n"
-    SUCCESS << "Proses selesai"
+    SUCCESS << "Proses selesai\n"
 
 
 if __name__ == "__main__":
