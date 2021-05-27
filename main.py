@@ -136,7 +136,7 @@ def main():
     selected_option_info = None
 
     if selected_payment_channel.has_option():
-        for index, option in selected_payment_channel.option_keys():
+        for index, option in enumerate(selected_payment_channel.option_keys()):
             print(f"{Fore.GREEN}[{index+1}] {Fore.BLUE}{option}")
 
         print()
